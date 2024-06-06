@@ -15,7 +15,7 @@ let rec last_two = function
 
 
 (* Problem 03 *)
-let rec at (k: int) (xs: 'a list): 'a option = 
+let rec at (k: int) (xs: 'a list) : 'a option = 
   match xs with
   | [] -> None
   | head :: tail -> if k == 1 then Some head else at (k - 1) tail
@@ -23,12 +23,12 @@ let rec at (k: int) (xs: 'a list): 'a option =
 
 
 (* Problem 04 *)
-let rec length (xs: 'a list): int = 
+let rec length (xs: 'a list) : int = 
   match xs with
   | [] -> 0
   | _ :: tail -> 1 + length tail 
 
-let length_tail (xs: 'a list): int =
+let length_tail (xs: 'a list) : int =
   let rec length_tail' (acc: int) (xs: 'a list)  =
     match xs with
     | [] -> acc
@@ -38,12 +38,18 @@ let length_tail (xs: 'a list): int =
 
 
 (* Problem 05 *)
-let rev (xs: 'a list): 'a list = 
+let rev (xs: 'a list) : 'a list = 
   let rec rev' (xs: 'a list) (acc: 'a list): 'a list = 
     match xs with
     | [] -> acc
     | head :: tail -> rev' tail (head :: acc) 
   in rev' xs []
+
+
+
+(* Problem 06 *)
+let is_palindrome (xs: 'a list) : bool =
+  xs = rev xs
 
 
 let () =
