@@ -4,17 +4,23 @@ let rec last = function
   | [x] -> Some x
   | _ :: tail -> last tail
 
+
+
 (* Problem 02 *)
 let rec last_two = function
   | [] | [_] -> None
   | [x; y] -> Some (x, y)
   | _ :: tail -> last_two tail
 
+
+
 (* Problem 03 *)
 let rec at (k: int) (xs: 'a list): 'a option = 
   match xs with
   | [] -> None
   | head :: tail -> if k == 1 then Some head else at (k - 1) tail
+
+
 
 (* Problem 04 *)
 let rec length (xs: 'a list): int = 
@@ -28,6 +34,17 @@ let length_tail (xs: 'a list): int =
     | [] -> acc
     | _ :: tail -> length_tail' (acc + 1) tail
   in length_tail' 0 xs 
+
+
+
+(* Problem 05 *)
+let rev (xs: 'a list): 'a list = 
+  let rec rev' (xs: 'a list) (acc: 'a list): 'a list = 
+    match xs with
+    | [] -> acc
+    | head :: tail -> rev' tail (head :: acc) 
+  in rev' xs []
+
 
 let () =
   print_endline "Hello, World!"
